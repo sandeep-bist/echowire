@@ -6,12 +6,17 @@ from datetime import datetime
 import os
 from auth import auth_blueprint
 from models import models_blueprint, db, UserData
+
+
 app = Flask(__name__)
 app.secret_key = "super secret key"
+
 login_manager = LoginManager(app)
 login_manager.init_app(app)
 csrf = CSRFProtect()
 csrf.init_app(app)
+
+
 # Register the auth Blueprint
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
 # app.register_blueprint(models_blueprint, url_prefix='/models')
